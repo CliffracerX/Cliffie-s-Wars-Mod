@@ -48,7 +48,7 @@ public class HandheldRocketLauncher extends Item
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World,EntityPlayer par3EntityPlayer) {
         RPGEntity laser = new RPGEntity(par2World, par3EntityPlayer, 1.0f, this.col);
         laser.setColor(this.col);
-        if(par3EntityPlayer.capabilities.isCreativeMode/*||par1ItemStack.getItemDamage()<0*/)
+        //if(par3EntityPlayer.capabilities.isCreativeMode/*||par1ItemStack.getItemDamage()<0*/)
         {
           par2World.playSoundAtEntity(par3EntityPlayer, "cliffieswarsmod:woosh", 0.5F, 2.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
           laser.color=this.col;
