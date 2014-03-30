@@ -109,7 +109,7 @@ public class LaserEntity extends Entity implements IProjectile
         this.setSize(0.5F, 0.5F);
         this.setLocationAndAngles(par2EntityLivingBase.posX, par2EntityLivingBase.posY + (double)par2EntityLivingBase.getEyeHeight(), par2EntityLivingBase.posZ, par2EntityLivingBase.rotationYaw, par2EntityLivingBase.rotationPitch);
         this.posX -= (double)(MathHelper.cos(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
-        this.posY -= 0.10000000149011612D;
+        this.posY += 0.60000000149011612D;
         this.posZ -= (double)(MathHelper.sin(this.rotationYaw / 180.0F * (float)Math.PI) * 0.16F);
         this.setPosition(this.posX, this.posY, this.posZ);
         this.yOffset = 0.0F;
@@ -235,7 +235,7 @@ public class LaserEntity extends Entity implements IProjectile
             {
                 ++this.ticksInGround;
 
-                if (this.ticksInGround == 1200)
+                if (this.ticksInGround == 1200 || this.ticksInAir == 1200)
                 {
                     this.setDead();
                 }
@@ -344,11 +344,6 @@ public class LaserEntity extends Entity implements IProjectile
                         if (movingobjectposition.entityHit instanceof EntityLivingBase)
                         {
                             EntityLivingBase entitylivingbase = (EntityLivingBase)movingobjectposition.entityHit;
-
-                            if (!this.worldObj.isRemote)
-                            {
-                                entitylivingbase.setArrowCountInEntity(entitylivingbase.getArrowCountInEntity() + 1);
-                            }
 
                             if (this.knockbackStrength > 0)
                             {

@@ -64,6 +64,7 @@ public class CliffiesWars
     public static int cRPGID = 5023;
     public static int bRPGID = 5024;
     public static int pRPGID = 5025;
+    public static int rocketID = 5026;
     public static Block dWall;
     public static Block rWall;
     public static Block oWall;
@@ -91,6 +92,7 @@ public class CliffiesWars
     public static Item cRPG;
     public static Item bRPG;
     public static Item pRPG;
+    public static Item rocket;
     
     @Instance("WarsMod")
     public static CliffiesWars instance = new CliffiesWars();
@@ -139,6 +141,7 @@ public class CliffiesWars
         cRPGID = config.get(Configuration.CATEGORY_ITEM, "Cyan rpg ItemID", 5023).getInt(5023);
         bRPGID = config.get(Configuration.CATEGORY_ITEM, "Blue rpg ItemID", 5024).getInt(5024);
         pRPGID = config.get(Configuration.CATEGORY_ITEM, "Purple rpg ItemID", 5025).getInt(5025);
+        rocketID = config.get(Configuration.CATEGORY_ITEM, "RPG/rocket ItemID", 5026).getInt(5026);
         // saving the configuration to its file
         config.save();
     }
@@ -251,14 +254,35 @@ public class CliffiesWars
         LanguageRegistry.addName(bRPG, "Blue RPG");
         pRPG = new HandheldRocketLauncher(pRPGID, "pRPG", "p").setUnlocalizedName("pRPG");
         LanguageRegistry.addName(pRPG, "Purple RPG");
+        rocket = new RocketItem(rocketID, "rocket").setUnlocalizedName("RPGAmmo");
+        LanguageRegistry.addName(rocket, "RPG ammo");
         //Crafting
-        GameRegistry.addRecipe(new ItemStack(rDeathray, 1, -2500), "#$", '$', battery, '#', rDeathray);
-        GameRegistry.addRecipe(new ItemStack(oDeathray, 1, -2500), "#$", '$', battery, '#', oDeathray);
-        GameRegistry.addRecipe(new ItemStack(yDeathray, 1, -2500), "#$", '$', battery, '#', yDeathray);
-        GameRegistry.addRecipe(new ItemStack(lDeathray, 1, -2500), "#$", '$', battery, '#', lDeathray);
-        GameRegistry.addRecipe(new ItemStack(gDeathray, 1, -2500), "#$", '$', battery, '#', gDeathray);
-        GameRegistry.addRecipe(new ItemStack(cDeathray, 1, -2500), "#$", '$', battery, '#', cDeathray);
-        GameRegistry.addRecipe(new ItemStack(bDeathray, 1, -2500), "#$", '$', battery, '#', bDeathray);
-        GameRegistry.addRecipe(new ItemStack(pDeathray, 1, -2500), "#$", '$', battery, '#', pDeathray);
+        GameRegistry.addRecipe(new ItemStack(rDeathray, 1), "#$", '$', battery, '#', rWall);
+        GameRegistry.addRecipe(new ItemStack(oDeathray, 1), "#$", '$', battery, '#', oWall);
+        GameRegistry.addRecipe(new ItemStack(yDeathray, 1), "#$", '$', battery, '#', yWall);
+        GameRegistry.addRecipe(new ItemStack(lDeathray, 1), "#$", '$', battery, '#', lWall);
+        GameRegistry.addRecipe(new ItemStack(gDeathray, 1), "#$", '$', battery, '#', gWall);
+        GameRegistry.addRecipe(new ItemStack(cDeathray, 1), "#$", '$', battery, '#', cWall);
+        GameRegistry.addRecipe(new ItemStack(bDeathray, 1), "#$", '$', battery, '#', bWall);
+        GameRegistry.addRecipe(new ItemStack(pDeathray, 1), "#$", '$', battery, '#', pWall);
+        GameRegistry.addRecipe(new ItemStack(rRPG, 1), "#$", '$', dWall, '#', rDeathray);
+        GameRegistry.addRecipe(new ItemStack(oRPG, 1), "#$", '$', dWall, '#', oDeathray);
+        GameRegistry.addRecipe(new ItemStack(yRPG, 1), "#$", '$', dWall, '#', yDeathray);
+        GameRegistry.addRecipe(new ItemStack(lRPG, 1), "#$", '$', dWall, '#', lDeathray);
+        GameRegistry.addRecipe(new ItemStack(gRPG, 1), "#$", '$', dWall, '#', gDeathray);
+        GameRegistry.addRecipe(new ItemStack(cRPG, 1), "#$", '$', dWall, '#', cDeathray);
+        GameRegistry.addRecipe(new ItemStack(bRPG, 1), "#$", '$', dWall, '#', bDeathray);
+        GameRegistry.addRecipe(new ItemStack(pRPG, 1), "#$", '$', dWall, '#', pDeathray);
+        GameRegistry.addRecipe(new ItemStack(rWall, 8), "###", "#$#", "###", '$', new ItemStack(Item.dyePowder, 1, 1), '#', dWall);
+        GameRegistry.addRecipe(new ItemStack(oWall, 8), "###", "#$#", "###", '$', new ItemStack(Item.dyePowder, 1, 14), '#', dWall);
+        GameRegistry.addRecipe(new ItemStack(yWall, 8), "###", "#$#", "###", '$', new ItemStack(Item.dyePowder, 1, 11), '#', dWall);
+        GameRegistry.addRecipe(new ItemStack(lWall, 8), "###", "#$#", "###", '$', new ItemStack(Item.dyePowder, 1, 10), '#', dWall);
+        GameRegistry.addRecipe(new ItemStack(gWall, 8), "###", "#$#", "###", '$', new ItemStack(Item.dyePowder, 1, 2), '#', dWall);
+        GameRegistry.addRecipe(new ItemStack(cWall, 8), "###", "#$#", "###", '$', new ItemStack(Item.dyePowder, 1, 12), '#', dWall);
+        GameRegistry.addRecipe(new ItemStack(bWall, 8), "###", "#$#", "###", '$', new ItemStack(Item.dyePowder, 1, 4), '#', dWall);
+        GameRegistry.addRecipe(new ItemStack(pWall, 8), "###", "#$#", "###", '$', new ItemStack(Item.dyePowder, 1, 5), '#', dWall);
+        GameRegistry.addRecipe(new ItemStack(dWall, 32), "###", "#$#", "###", '$', Block.blockIron, '#', Block.stone);
+        GameRegistry.addRecipe(new ItemStack(battery, 8), " # ", "#$#", " # ", '$', Item.redstone, '#', Item.ingotIron);
+        GameRegistry.addRecipe(new ItemStack(rocket, 8), " # ", "#$#", " # ", '$', Item.gunpowder, '#', Block.stone);
     }
 }
