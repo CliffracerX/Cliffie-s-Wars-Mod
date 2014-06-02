@@ -249,7 +249,10 @@ public class RPGEntity extends Entity implements IProjectile
                 this.ticksInGround = 0;
                 this.ticksInAir = 0;
             }
-            this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)10, true);
+            if(this.worldObj.isRemote==false)
+            {
+            this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)1, true);
+            }
         }
         else
         {
@@ -335,7 +338,10 @@ public class RPGEntity extends Entity implements IProjectile
                         damagesource = DamageSource.causeThrownDamage(this, this.shootingEntity);
                     }
                     
-                    this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)10, true);
+                    if(this.worldObj.isRemote==false)
+                    {
+                    this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)1, true);
+                    }
 
                     if (this.isBurning() && !(movingobjectposition.entityHit instanceof EntityEnderman))
                     {
@@ -414,7 +420,10 @@ public class RPGEntity extends Entity implements IProjectile
                     {
                         Block.blocksList[this.inTile].onEntityCollidedWithBlock(this.worldObj, this.xTile, this.yTile, this.zTile, this);
                     }
-                    this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)10, true);
+                    if(this.worldObj.isRemote==false)
+                    {
+                    this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, (float)1, true);
+                    }
                     this.setDead();
                 }
             }

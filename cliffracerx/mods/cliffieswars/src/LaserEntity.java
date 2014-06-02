@@ -381,6 +381,7 @@ public class LaserEntity extends Entity implements IProjectile
                         this.rotationYaw += 180.0F;
                         this.prevRotationYaw += 180.0F;
                         this.ticksInAir = 0;
+                        this.setDead();
                     }
                 }
                 else

@@ -25,7 +25,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class HandheldRocketLauncher extends Item
 {
     private String tex;
-    private String col;
+    String col;
     private Icon[] icons;
 
     public HandheldRocketLauncher(int id, String tex, String color)

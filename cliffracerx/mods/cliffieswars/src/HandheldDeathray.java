@@ -8,6 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntitySnowball;
+import net.minecraft.item.EnumAction;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -25,7 +26,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class HandheldDeathray extends Item
 {
     private String tex;
-    private String col;
+    String col;
     private Icon[] icons;
 
     public HandheldDeathray(int id, String tex, String color)
@@ -47,6 +48,7 @@ public class HandheldDeathray extends Item
     
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World,EntityPlayer par3EntityPlayer) {
         LaserEntity laser = new LaserEntity(par2World, par3EntityPlayer, 1.5f, this.col);
+        
         laser.setColor(this.col);
         //if(||par1ItemStack.getItemDamage()<0)
         {
